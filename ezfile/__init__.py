@@ -12,7 +12,7 @@ def get_relative_path(start_path,path):
     return os.path.relpath(path, start_path)
 
 def get_curr_dir(path):
-    return get_parent_dir( os.path.abspath(sys.path[0]) )
+    return os.path.abspath(sys.path[0])
 
 def exists(path):
     """tell if a path exists"""
