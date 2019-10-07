@@ -11,7 +11,7 @@ def get_relative_path(start_path,path):
     ''' 返回相对路径 '''
     return os.path.relpath(path, start_path)
 
-def get_curr_dir(path):
+def get_curr_dir():
     return os.path.abspath(sys.path[0])
 
 def exists(path):
