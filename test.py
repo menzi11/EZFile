@@ -2,10 +2,6 @@
 
 import ezfile
 
-k=ezfile.ezfile("C:/Users/mk/source/repos_build/TBTMegaProject_build/Soloist2/detector")
-files = k.find_child_files(True,'exe')
-print(files)
-
-b=ezfile.ezfile("C:/Users/mk/source/repos_build/TBTMegaProject_build/Soloist2/detector2")
-k.copy_to(b)
-b.rename('abc')
+b=ezfile.find_child_files(r"C:\Users\mk\source\repos\TBTCodes\researching\matlab\XIIR",True)
+for x in b:
+    print(x)

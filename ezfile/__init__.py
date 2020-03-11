@@ -160,9 +160,7 @@ def change_encode_of_text_file(path, target_code , src_encoding = '' ):
 
 def find_child_files(path, searchRecursively=False, wildCardPattern="."):
     """在当前目录中查找文件,若选择searchRecursively则代表着搜索包含子目录, wildCardPattern意思是只搜索扩展名为".xxx"的文件,也可留空代表搜索全部文件. """
-    wildCardPattern = wildCardPattern.replace('*', '')
-    if wildCardPattern[0] != '.':
-        wildCardPattern = '.' + wildCardPattern
+    all_search_list = ['.','.*','*','']
     tmp = list()
     if not exists_as_dir(path):
         return tmp
@@ -170,7 +168,12 @@ def find_child_files(path, searchRecursively=False, wildCardPattern="."):
         if fpath is not get_full_path_with_ext(path) and not searchRecursively:
             break
         for filename in fnames:
-            if not filename.endswith(wildCardPattern) and wildCardPattern is not '.':
-                continue
+            if wildCardPattern in all_search_list:
+                pass
+            else:
+                if wildCardPattern[0] != '.':
+                    wildCardPattern = '.' + wildCardPattern
+                if not filename.endswith(wildCardPattern) and wildCardPattern is not '.':
+                    continue
             tmp.append( os.path.join(fpath,filename) )
     return tmp
